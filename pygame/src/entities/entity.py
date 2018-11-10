@@ -1,6 +1,6 @@
 import pygame as pg
 
-
+# Base class from all entities
 class Entity(pg.sprite.Sprite):
 
 	# Every Sprite requires these fields
@@ -14,7 +14,6 @@ class Entity(pg.sprite.Sprite):
 	_width = None
 	_length = None
 
-
 	def __init__(self, x_pos=None, y_pos=None, mass=None,
 				 width=None, length=None, sprite=None):
 		super().__init__()
@@ -23,6 +22,7 @@ class Entity(pg.sprite.Sprite):
 			width = 0
 			length = 0
 		self.set_sprite(sprite)
+		# By default, set the center of the
 		self.set_rect_center(width, length)
 		self.set_entity_size(width, length)
 		if x_pos and y_pos:
@@ -63,6 +63,7 @@ class Entity(pg.sprite.Sprite):
 	def get_entity_size(self):
 		return self._width, self._length
 
+	# Sets rectangle around sprite. Used for collisions
 	def set_rect_center(self, width, length):
 		self.rect = self.image.get_rect()
 		self.rect.center = (width / 2, length / 2)

@@ -1,5 +1,6 @@
 from src.managers.entity_manager import EntityManager as em
 
+# Base class for all game states
 class GameState:
 
 	def __init__(self):
@@ -9,5 +10,4 @@ class GameState:
 		em.instance().update()
 
 	def draw(self, screen):
-		screen.fill((230,25,20))
 		em.instance().draw(screen)

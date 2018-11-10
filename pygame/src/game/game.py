@@ -9,20 +9,20 @@ class Game:
 	_fps = 30
 	_game_title = "Game"
 	_screen = None
-	_screen_size = (800,600)
-	_screen_background_color = (255,255,255)
+	_screen_size = (800, 600)
+	#_screen_background_color = (255, 255, 255)
 
 	def __init__(self):
 		self._screen = pg.display.set_mode(self._screen_size)
 
 		pg.display.set_caption(self._game_title)
 
+		# Not needed, just here for testing purposes
 		gsm.instance().init()
 		em.instance().init()
 
 		# Test
 		gsm.instance().set_game_state('test_state')
-
 
 	def _handle_event(self):
 		for e in pg.event.get():
