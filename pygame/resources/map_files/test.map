@@ -1,0 +1,8 @@
+[name]
+"test"
+
+[spites]
+"/home/plb538/Code/python/pygame/pygame/resources/sprites/*"
+
+
+[map]

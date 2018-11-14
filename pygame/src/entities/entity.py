@@ -1,44 +1,71 @@
 import pygame as pg
+vec = pg.math.Vector2
+
 
 # Base class from all entities
 class Entity(pg.sprite.Sprite):
 
-	# Every Sprite requires these fields
-	image = None
-	rect = None
-
-	# These fields are for us
-	_x_pos = None
-	_y_pos = None
-	_mass = None
-	_width = None
-	_length = None
-
 	def __init__(self, x_pos=None, y_pos=None, mass=None,
-				 width=None, length=None, sprite=None):
+				 width=None, length=None, sprite=None,
+				 x_vel=None, y_vel=None, x_acc=None, y_acc=None):
 		super().__init__()
-		# Must be defined
+		# Every Sprite requires these fields
+		self.image = None
+		self.rect = None
+		self.set_image(sprite)
+
 		if not width and not length:
 			width = 0
 			length = 0
-		self.set_sprite(sprite)
-		# By default, set the center of the
-		self.set_rect_center(width, length)
-		self.set_entity_size(width, length)
-		if x_pos and y_pos:
-			self.set_position(x_pos, y_pos)
-		if mass:
-			self.set_mass(mass)
+		self.rect = self.image.get_rect()
+		self.image = pg.transform.scale(self.image, (width, length))
+		self._width = width
+		self._length = length
+		self._mass = mass
 
+		self._pos = vec()
+		if not x_pos:
+			x_pos = 0
+		if not y_pos:
+			y_pos = 0
+		self.set_position(x_pos, y_pos)
+
+		self._vel = vec()
+		if not x_vel:
+			x_vel = 0
+		if not y_vel:
+			y_vel = 0
+		self.set_velocity(x_vel, y_vel)
+
+		self._acc = vec()
+		if not x_acc:
+			x_acc = 0
+		if not y_acc:
+			y_acc = 0
+		self.set_acceleration(x_acc, y_acc)
 
 	def set_position(self, x_pos, y_pos):
-		self._x_pos = x_pos
-		self._y_pos = y_pos
-		self.rect.x = x_pos
-		self.rect.y = y_pos
+		self._pos.x = x_pos
+		self._pos.y = y_pos
+		self.rect.center = self._pos
 
 	def get_position(self):
-		return self._x_pos, self._y_pos
+		return self._pos
+
+	def set_velocity(self, x_vel, y_vel):
+		self._vel.x = x_vel
+		self._vel.y = y_vel
+
+	def get_velocity(self):
+		return self._vel
+
+	def set_acceleration(self, x_acc, y_acc):
+		self._acc.x = x_acc
+		self._acc.y = y_acc
+
+	def get_acceleration(self):
+		print(self._acc)
+		return self._acc
 
 	def set_mass(self, mass):
 		self._mass = mass
@@ -63,11 +90,6 @@ class Entity(pg.sprite.Sprite):
 	def get_entity_size(self):
 		return self._width, self._length
 
-	# Sets rectangle around sprite. Used for collisions
-	def set_rect_center(self, width, length):
-		self.rect = self.image.get_rect()
-		self.rect.center = (width / 2, length / 2)
-
-	def set_sprite(self, sprite_path):
+	def set_image(self, sprite_path):
 		self.image = pg.image.load(sprite_path).convert()
 

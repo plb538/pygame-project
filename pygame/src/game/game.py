@@ -4,15 +4,15 @@ from src.managers.game_state_manager import GameStateManager as gsm
 
 
 class Game:
-	_running = True
-	_clk = pg.time.Clock()
-	_fps = 30
-	_game_title = "Game"
-	_screen = None
-	_screen_size = (800, 600)
-	#_screen_background_color = (255, 255, 255)
 
 	def __init__(self):
+		self._running = True
+		self._clk = pg.time.Clock()
+		self._fps = 30
+		self._game_title = "Game"
+		self._screen = None
+		self._screen_size = (800, 600)
+
 		self._screen = pg.display.set_mode(self._screen_size)
 
 		pg.display.set_caption(self._game_title)
