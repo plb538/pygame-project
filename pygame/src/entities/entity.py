@@ -1,7 +1,6 @@
 import pygame as pg
 vec = pg.math.Vector2
 
-
 # Base class from all entities
 class Entity(pg.sprite.Sprite):
 
@@ -12,16 +11,15 @@ class Entity(pg.sprite.Sprite):
 		# Every Sprite requires these fields
 		self.image = None
 		self.rect = None
-		self.set_image(sprite)
-
-		if not width and not length:
-			width = 0
-			length = 0
-		self.rect = self.image.get_rect()
-		self.image = pg.transform.scale(self.image, (width, length))
 		self._width = width
 		self._length = length
 		self._mass = mass
+
+		self.set_image(sprite)
+		if not width and not length:
+			width = 0
+			length = 0
+		self.set_entity_size(width, length)
 
 		self._pos = vec()
 		if not x_pos:
@@ -47,7 +45,7 @@ class Entity(pg.sprite.Sprite):
 	def set_position(self, x_pos, y_pos):
 		self._pos.x = x_pos
 		self._pos.y = y_pos
-		self.rect.center = self._pos
+		self.rect.midbottom = self._pos
 
 	def get_position(self):
 		return self._pos
@@ -64,7 +62,6 @@ class Entity(pg.sprite.Sprite):
 		self._acc.y = y_acc
 
 	def get_acceleration(self):
-		print(self._acc)
 		return self._acc
 
 	def set_mass(self, mass):
@@ -75,12 +72,10 @@ class Entity(pg.sprite.Sprite):
 
 	def set_entity_size(self, width, length):
 		try:
-			if self._width == width and self._length == length:
-				return
-			else:
-				self._width = width
-				self._length = length
-				self.image = pg.transform.scale(self.image, (width, length))
+			self._width = width
+			self._length = length
+			self.image = pg.transform.scale(self.image, (width, length))
+			self.rect = self.image.get_rect()
 		except Exception as ex:
 			raise Exception(
 				"Failed to set image size: %s"

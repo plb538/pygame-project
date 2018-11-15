@@ -5,27 +5,44 @@ from src.factories.entity_factory import EntityFactory as ef
 @Singleton
 class EntityManager:
 
-	_entities = pg.sprite.Group()
+	entity_groups = {
+		ef.instance().PLAYER: None,
+		ef.instance().PLATFORM: None,
+		ef.instance().ENEMY: None
+	}
 
 	@staticmethod
 	def init():
 		print("Initializing EntityManager.")
 
 	def update(self):
-		self._entities.update()
+		for k, v in self.entity_groups.items():
+			if v:
+				v.update()
 
 	def draw(self, screen):
-		self._entities.draw(screen)
+		for k, v in self.entity_groups.items():
+			if v:
+				v.draw(screen)
 
-	def create_entity(self, entity, **kwargs):
+	def create_entity(self, entity_type, **kwargs):
 		try:
-			e = ef.instance()\
-				.create_entity(entity, **kwargs)
-			self._entities.add(e)
-			return e
+			entity = ef.instance()\
+				.create_entity(entity_type, **kwargs)
+			if entity:
+				self.add_to_entity_group(entity, entity_type)
+			return entity
 		except Exception as ex:
 			raise Exception(
 				"Failed to create entity: %s"
 				% ex
 			)
+
+	def add_to_entity_group(self, entity, entity_type):
+		if not self.entity_groups[entity_type]:
+			self.entity_groups[entity_type] = pg.sprite.Group()
+		self.entity_groups[entity_type].add(entity)
+
+
+
 

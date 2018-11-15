@@ -2,17 +2,17 @@ from src.entities.entity import Entity
 import pygame as pg
 vec = pg.math.Vector2
 
+
 class Player(Entity):
 
 	def __init__(self, **kwargs):
-		super().__init__(**kwargs)
-
+		super(Player, self).__init__(**kwargs)
 
 	# This is just here for now until
 	# an event manager is created.
 	def update(self):
 		keys = pg.key.get_pressed()
-		acc = vec()
+		acc = vec(0, 2)
 		ACC = 2
 		FRICTION = -0.2
 		if keys[pg.K_LEFT]:
@@ -32,11 +32,4 @@ class Player(Entity):
 		pos = self.get_position()
 		pos += vel
 		self.set_position(pos.x, pos.y)
-
-
-
-
-
-
-
 
