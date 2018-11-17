@@ -17,7 +17,7 @@ class TestState(GameState):
 		self.p1 = em.instance()\
 			.create_entity(
 			'player',
-			x_pos=350, y_pos=100, mass=100,
+			x_pos=351, y_pos=100, mass=100,
 			width=128, length=128,
 			sprite="{}/adventurer-idle-00.png".format(c.SPRITE_PATH)
 		)
