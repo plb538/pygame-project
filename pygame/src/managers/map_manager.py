@@ -11,9 +11,6 @@ class MapManager:
 	def load_map(self, map):
 		try:
 			pass
-		except Exception as ex:
-			raise Exception(
-				"Failed to load map: %s"
-				% ex
-			)
+		except Exception:
+			raise
 

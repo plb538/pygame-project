@@ -76,11 +76,8 @@ class Entity(pg.sprite.Sprite):
 			self._length = length
 			self.image = pg.transform.scale(self.image, (width, length))
 			self.rect = self.image.get_rect()
-		except Exception as ex:
-			raise Exception(
-				"Failed to set image size: %s"
-				% ex
-			)
+		except Exception:
+			raise
 
 	def get_entity_size(self):
 		return self._width, self._length

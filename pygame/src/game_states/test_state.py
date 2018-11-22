@@ -4,6 +4,7 @@ from src.managers.map_manager import MapManager as mm
 from src.common import constants as c
 
 import pygame as pg
+
 class TestState(GameState):
 
 	def __init__(self):

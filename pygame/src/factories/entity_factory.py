@@ -7,7 +7,7 @@ from src.entities.enemy import Enemy
 @Singleton
 class EntityFactory:
 
-	_entity_types = (
+	entity_types = (
 		PLAYER,
 		PLATFORM,
 		ENEMY
@@ -25,7 +25,6 @@ class EntityFactory:
 				return Platform(**kwargs)
 			if entity == self.ENEMY:
 				return Enemy(**kwargs)
-		except Exception as ex:
-			print(ex)
+		except Exception:
 			raise
 

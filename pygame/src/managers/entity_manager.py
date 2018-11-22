@@ -6,9 +6,8 @@ from src.factories.entity_factory import EntityFactory as ef
 class EntityManager:
 
 	entity_groups = {
-		ef.instance().PLAYER: None,
-		ef.instance().PLATFORM: None,
-		ef.instance().ENEMY: None
+		key: pg.sprite.Group()
+		for key in ef.instance().entity_types
 	}
 
 	@staticmethod
@@ -17,13 +16,11 @@ class EntityManager:
 
 	def update(self):
 		for k, v in self.entity_groups.items():
-			if v:
-				v.update()
+			v.update()
 
 	def draw(self, screen):
 		for k, v in self.entity_groups.items():
-			if v:
-				v.draw(screen)
+			v.draw(screen)
 
 	def create_entity(self, entity_type, **kwargs):
 		try:
@@ -32,15 +29,10 @@ class EntityManager:
 			if entity:
 				self.add_to_entity_group(entity, entity_type)
 			return entity
-		except Exception as ex:
-			raise Exception(
-				"Failed to create entity: %s"
-				% ex
-			)
+		except Exception:
+			raise
 
 	def add_to_entity_group(self, entity, entity_type):
-		if not self.entity_groups[entity_type]:
-			self.entity_groups[entity_type] = pg.sprite.Group()
 		self.entity_groups[entity_type].add(entity)
 
 

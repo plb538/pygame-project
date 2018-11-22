@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 
+import traceback
+
 import pygame as pg
-from src.game import game
+from src.game.game import Game
 
 if __name__ == "__main__":
 	try:
 		pg.init()
-		g = game.Game()
+		g = Game()
 		g.start()
-	except Exception as ex:
-		print(ex)
+	except Exception:
+		traceback.print_exc()
 		raise
 	finally:
 		pg.quit()

@@ -10,11 +10,8 @@ class Game:
 		self._clk = pg.time.Clock()
 		self._fps = 30
 		self._game_title = "Game"
-		self._screen = None
 		self._screen_size = (800, 600)
-
 		self._screen = pg.display.set_mode(self._screen_size)
-
 		pg.display.set_caption(self._game_title)
 
 		# Not needed, just here for testing purposes
@@ -46,4 +43,3 @@ class Game:
 			self._clk.tick(self._fps)
 			pg.display.update()
 		print("Exiting game loop.")
-

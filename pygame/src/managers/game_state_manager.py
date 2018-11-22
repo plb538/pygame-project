@@ -26,8 +26,7 @@ class GameStateManager:
 			gs = gsf.instance()\
 				.create_game_state(game_state)
 			self._cur_game_state = gs
-		except Exception as ex:
-			print(ex)
+		except Exception:
 			raise
 
 
