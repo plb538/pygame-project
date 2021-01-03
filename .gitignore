@@ -1,4 +1,7 @@
-*.pyc
-*.pyo
-__pycahe__/
-.idea/
+**/*.pyc
+**/*.pyo
+**/__pycahe__/
+
+**/venv/
+**/.idea/
+**/.vscode/
