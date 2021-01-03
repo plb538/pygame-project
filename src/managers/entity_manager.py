@@ -1,13 +1,14 @@
-import pygame as pg
 from src.decorators.singleton import Singleton
-from src.factories.entity_factory import EntityFactory as ef
+from src.factories.entity_factory import EntityFactory
+
+import pygame as pg
 
 @Singleton
 class EntityManager:
 
 	entity_groups = {
 		key: pg.sprite.Group()
-		for key in ef.instance().entity_types
+		for key in EntityFactory.instance().entity_types
 	}
 
 	@staticmethod
@@ -24,8 +25,7 @@ class EntityManager:
 
 	def create_entity(self, entity_type, **kwargs):
 		try:
-			entity = ef.instance()\
-				.create_entity(entity_type, **kwargs)
+			entity = EntityFactory.instance().create_entity(entity_type, **kwargs)
 			if entity:
 				self.add_to_entity_group(entity, entity_type)
 			return entity

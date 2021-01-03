@@ -1,5 +1,5 @@
 from src.decorators.singleton import Singleton
-from src.factories.game_state_factory import GameStateFactory as gsf
+from src.factories.game_state_factory import GameStateFactory
 
 
 @Singleton
@@ -23,9 +23,8 @@ class GameStateManager:
 		try:
 			if self._cur_game_state:
 				del self._cur_game_state
-			gs = gsf.instance()\
-				.create_game_state(game_state)
-			self._cur_game_state = gs
+			_game_state = GameStateFactory.instance().create_game_state(game_state)
+			self._cur_game_state = _game_state
 		except Exception:
 			raise
 

@@ -15,6 +15,7 @@ class Entity(pg.sprite.Sprite):
 		self._length = length
 		self._mass = mass
 
+		# NOTE: Need to move to physics.
 		self.set_image(sprite)
 		if not width and not length:
 			width = 0
@@ -83,5 +84,6 @@ class Entity(pg.sprite.Sprite):
 		return self._width, self._length
 
 	def set_image(self, sprite_path):
+		print(sprite_path)
 		self.image = pg.image.load(sprite_path).convert()
 

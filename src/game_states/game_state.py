@@ -1,4 +1,4 @@
-from src.managers.entity_manager import EntityManager as em
+from src.managers.entity_manager import EntityManager
 
 # Base class for all game states
 class GameState:
@@ -7,7 +7,7 @@ class GameState:
 		pass
 
 	def update(self):
-		em.instance().update()
+		EntityManager.instance().update()
 
 	def draw(self, screen):
-		em.instance().draw(screen)
+		EntityManager.instance().draw(screen)

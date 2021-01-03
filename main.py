@@ -1,9 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
-import traceback
+from src.game.game import Game
 
 import pygame as pg
-from src.game.game import Game
+import traceback
+
 
 if __name__ == "__main__":
 	try:

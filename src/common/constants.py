@@ -1,9 +1,5 @@
 import os
 
-# Just do this for now until we have a better way
-
-base_path = os.path.dirname(__file__)
-
-RESOURCES_PATH = os.path.join(base_path, '../../resources')
-
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+RESOURCES_PATH = os.path.join(ROOT_DIR, 'resources')
 SPRITE_PATH = os.path.join(RESOURCES_PATH, 'sprites')
