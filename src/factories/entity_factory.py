@@ -25,6 +25,6 @@ class EntityFactory:
 				return Platform(**kwargs)
 			if entity == self.ENEMY:
 				return Enemy(**kwargs)
-		except Exception:
-			raise
+		except Exception as ex:
+			raise ex
 

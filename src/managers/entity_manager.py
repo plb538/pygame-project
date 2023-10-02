@@ -29,8 +29,8 @@ class EntityManager:
 			if entity:
 				self.add_to_entity_group(entity, entity_type)
 			return entity
-		except Exception:
-			raise
+		except Exception as ex:
+			raise ex
 
 	def add_to_entity_group(self, entity, entity_type):
 		self.entity_groups[entity_type].add(entity)

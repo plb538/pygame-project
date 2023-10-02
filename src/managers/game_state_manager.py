@@ -25,5 +25,5 @@ class GameStateManager:
 				del self.cur_game_state
 			new_game_state = GameStateFactory.instance().create_game_state(game_state)
 			self.cur_game_state = new_game_state
-		except Exception:
-			raise
+		except Exception as ex:
+			raise ex

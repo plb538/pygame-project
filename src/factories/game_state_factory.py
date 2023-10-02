@@ -14,6 +14,6 @@ class GameStateFactory:
 		try:
 			if game_state == self.TEST_STATE:
 				return TestState()
-		except Exception:
-			raise
+		except Exception as ex:
+			raise ex
 

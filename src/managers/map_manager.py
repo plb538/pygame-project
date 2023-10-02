@@ -11,5 +11,5 @@ class MapManager:
 	def load_map(self, map):
 		try:
 			pass
-		except Exception:
-			raise
+		except Exception as ex:
+			raise ex
