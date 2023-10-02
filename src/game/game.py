@@ -8,7 +8,7 @@ class Game:
 	def __init__(self):
 		self.running = True
 		self.clk = pg.time.Clock()
-		self.fps = 60
+		self.fps = 30
 		self.game_title = "Game"
 		self.screen_size = (800, 600)
 		self.screen = pg.display.set_mode(self.screen_size)
@@ -37,5 +37,6 @@ class Game:
 			self.update()
 			self.draw()
 			self.clk.tick(self.fps)
+			print(round(self.clk.get_fps(), 1))
 			pg.display.update()
 		print("Exiting game loop.")

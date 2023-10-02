@@ -24,7 +24,7 @@ class TestState(GameState):
 		EntityManager.instance().create_entity(
 			'platform',
 			x_pos=400, y_pos=500, mass=100,
-			width=328, length=128,
+			width=528, length=128,
 			sprite="{}/goku.jpg".format(const.SPRITE_PATH)
 		)
 

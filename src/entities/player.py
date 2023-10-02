@@ -12,22 +12,22 @@ class Player(Entity):
 	# an event manager is created.
 	def update(self):
 		keys = pg.key.get_pressed()
-		acc = vec(0, 2)
-		ACC = 2
-		FRICTION = -0.2
+		acc_vec = vec(0, 2) # Gravity. Move to physics.
+		acc = 2 # Run speed.
+		friction = -0.2
 		if keys[pg.K_LEFT]:
-			acc.x -= ACC
+			acc_vec.x -= acc
 		if keys[pg.K_RIGHT]:
-			acc.x += ACC
+			acc_vec.x += acc
 		if keys[pg.K_UP]:
-			acc.y -= ACC
+			acc_vec.y -= acc
 		if keys[pg.K_DOWN]:
-			acc.y += ACC
+			acc_vec.y += acc
 
-		self.set_acceleration(acc.x, acc.y)
+		self.set_acceleration(acc_vec.x, acc_vec.y)
 		vel = self.get_velocity()
-		acc += vel * FRICTION
-		vel += acc
+		acc_vec += vel * friction
+		vel += acc_vec
 		self.set_velocity(vel.x, vel.y)
 		pos = self.get_position()
 		pos += vel

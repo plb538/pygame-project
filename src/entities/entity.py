@@ -84,6 +84,5 @@ class Entity(pg.sprite.Sprite):
 		return self.width, self.length
 
 	def set_image(self, sprite_path):
-		print(sprite_path)
 		self.image = pg.image.load(sprite_path).convert()
 
