@@ -7,13 +7,11 @@
     ![Python Download Wizard](./resources/readme/python_instructions.png "Add Python to Path")
 
 
-2. Run the following in the Windows cmdline to update your Python package manager and install the required dependencies:
+2. Run the following in the Windows cmdline to install Poetry and the necessary Python packages (make sure you're using python3):
 
 ```
-python -m pip install -U pip
-python -m venv venv
-.\venv\Scripts\activate
-python -m pip install -r requirements.txt
+python -m pip install -U pip poetry
+poetry install
 ```
 
 # Running the Game
