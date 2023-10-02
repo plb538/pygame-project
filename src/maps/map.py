@@ -7,4 +7,3 @@ class Map:
 
 	def parse_map_file(self, map_file):
 		return {}
-

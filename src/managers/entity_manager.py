@@ -34,7 +34,3 @@ class EntityManager:
 
 	def add_to_entity_group(self, entity, entity_type):
 		self.entity_groups[entity_type].add(entity)
-
-
-
-

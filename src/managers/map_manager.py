@@ -13,4 +13,3 @@ class MapManager:
 			pass
 		except Exception:
 			raise
-

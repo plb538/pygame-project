@@ -11,9 +11,9 @@ class Entity(pg.sprite.Sprite):
 		# Every Sprite requires these fields
 		self.image = None
 		self.rect = None
-		self._width = width
-		self._length = length
-		self._mass = mass
+		self.width = width
+		self.length = length
+		self.mass = mass
 
 		# NOTE: Need to move to physics.
 		self.set_image(sprite)
@@ -22,21 +22,21 @@ class Entity(pg.sprite.Sprite):
 			length = 0
 		self.set_entity_size(width, length)
 
-		self._pos = vec()
+		self.pos = vec()
 		if not x_pos:
 			x_pos = 0
 		if not y_pos:
 			y_pos = 0
 		self.set_position(x_pos, y_pos)
 
-		self._vel = vec()
+		self.vel = vec()
 		if not x_vel:
 			x_vel = 0
 		if not y_vel:
 			y_vel = 0
 		self.set_velocity(x_vel, y_vel)
 
-		self._acc = vec()
+		self.acc = vec()
 		if not x_acc:
 			x_acc = 0
 		if not y_acc:
@@ -44,44 +44,44 @@ class Entity(pg.sprite.Sprite):
 		self.set_acceleration(x_acc, y_acc)
 
 	def set_position(self, x_pos, y_pos):
-		self._pos.x = x_pos
-		self._pos.y = y_pos
-		self.rect.midbottom = self._pos
+		self.pos.x = x_pos
+		self.pos.y = y_pos
+		self.rect.midbottom = self.pos
 
 	def get_position(self):
-		return self._pos
+		return self.pos
 
 	def set_velocity(self, x_vel, y_vel):
-		self._vel.x = x_vel
-		self._vel.y = y_vel
+		self.vel.x = x_vel
+		self.vel.y = y_vel
 
 	def get_velocity(self):
-		return self._vel
+		return self.vel
 
 	def set_acceleration(self, x_acc, y_acc):
-		self._acc.x = x_acc
-		self._acc.y = y_acc
+		self.acc.x = x_acc
+		self.acc.y = y_acc
 
 	def get_acceleration(self):
-		return self._acc
+		return self.acc
 
 	def set_mass(self, mass):
-		self._mass = mass
+		self.mass = mass
 
 	def get_mass(self):
-		return self._mass
+		return self.mass
 
 	def set_entity_size(self, width, length):
 		try:
-			self._width = width
-			self._length = length
+			self.width = width
+			self.length = length
 			self.image = pg.transform.scale(self.image, (width, length))
 			self.rect = self.image.get_rect()
 		except Exception:
 			raise
 
 	def get_entity_size(self):
-		return self._width, self._length
+		return self.width, self.length
 
 	def set_image(self, sprite_path):
 		print(sprite_path)

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pygame-project"
+version = "0.1.0"
+description = ""
+authors = ["Patrick Bonnell <patrick.bonnell@verafin.com>"]
+readme = "README.md"
+packages = [{include = "pygame_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pygame = "^2.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -4,7 +4,7 @@ from src.game_states.test_state import TestState
 @Singleton
 class GameStateFactory:
 
-	_game_states = (
+	game_states = (
 		TEST_STATE
 	) = (
 		'test_state'
